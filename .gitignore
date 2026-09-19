@@ -1,0 +1,7 @@
+node_modules/
+dist/
+public/frames/
+.DS_Store
+test-results/
+# Originals retained locally; canonical deployment inputs live in public/videos/.
+videos/

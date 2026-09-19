@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111512" />
+    <meta name="description" content="Explore a landscape design from concept sketch to architectural plan, materials and a finished 3D visualisation." />
+    <title>Landscape Vision — From Sketch to Reality</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%239eb18b' d='M5 27V5h3v19h19v3zM13 19V5h3v11h11v3z'/%3E%3C/svg%3E" />
+    <style>body{margin:0;background:#111512;color:#f3f1e8;font-family:Arial,sans-serif}.startup{position:fixed;inset:0;z-index:100;display:grid;place-content:center;text-align:center;padding:2rem}.startup a{color:inherit}</style>
+  </head>
+  <body>
+    <div id="loading" class="startup" role="status" aria-live="polite">
+      <span class="loading-mark" aria-hidden="true">LV</span>
+      <p id="loading-label">Preparing your landscape</p>
+      <progress id="loading-progress" max="100" value="0" aria-label="Loading landscape frames"></progress>
+      <span id="loading-count">0%</span>
+    </div>
+    <noscript><style>.startup{display:none}.no-script{padding:3rem;max-width:40rem}</style><div class="no-script"><h1>This landscape needs JavaScript.</h1><p>Enable JavaScript in your browser to explore the four design stages.</p></div></noscript>
+    <main id="experience" class="experience" aria-label="Landscape design transformation" hidden>
+      <section class="viewport" aria-label="Interactive landscape presentation">
+        <canvas id="landscape" role="img" aria-label="Landscape design, concept sketch">A landscape evolves through four stages: concept sketch, architectural plan, materials and planting, and a completed 3D visualisation. Use the stage buttons to explore.</canvas>
+        <div class="shade" aria-hidden="true"></div>
+        <header class="topbar">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span id="brand"></span></div>
+          <div class="project-meta"><span id="project"></span><span id="detail"></span></div>
+        </header>
+        <div class="copy" id="copy">
+          <p class="eyebrow"><span id="stage-number"></span><span class="label-rule" aria-hidden="true"></span><span id="stage-label"></span></p>
+          <h1 id="stage-heading"></h1>
+          <p class="body-copy" id="stage-body"></p>
+        </div>
+        <div class="bottom-panel">
+          <div class="experience-meta"><span id="scroll-cue"></span><span class="frame-progress" aria-hidden="true"><span id="percent">000</span> / 100</span></div>
+          <nav id="stage-navigation" class="stage-navigation"></nav>
+        </div>
+        <p id="stage-announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+        <div id="frame-error" class="frame-error" role="alert" hidden><span>Some landscape frames could not load. Check your connection.</span> <button type="button" id="reload">Reload</button></div>
+      </section>
+    </main>
+    <script>
+      window.landscapeStartupTimeout = setTimeout(function () {
+        if (!document.getElementById('loading').hidden) document.getElementById('loading-label').textContent = 'The landscape could not finish loading. Check your connection and reload the page.';
+      }, 30000);
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
